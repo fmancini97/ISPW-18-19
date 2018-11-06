@@ -23,19 +23,20 @@ import javafx.stage.Stage;
 
 
 public class controller {
-        @FXML
+    @FXML
     private ProgressIndicator progress;
-        @FXML
+    @FXML
     private ToggleGroup Group1;
-        @FXML
+    @FXML
     private RadioButton easy;
-        @FXML
+    @FXML
     private RadioButton medium;
-            @FXML
+    @FXML
     private RadioButton hard;
-  
     @FXML
     private Button closeButton;
+    @FXML
+    private Button gioca;
     
     
     /*
@@ -48,7 +49,8 @@ public class controller {
             stage.close();
     }
     
-    public void popup(Stage popup, String FXML) throws Exception{
+    public void popup(String FXML) throws Exception{
+        Stage popup = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource(FXML));
         popup.setTitle("Registration Form FXML Application");
         popup.setScene(new Scene(root, 300, 100));
@@ -64,9 +66,7 @@ public class controller {
     
     // Nel caso in cui arrivo al 100%
     if (progress.getProgress() > 1){
-        System.out.println("Ci siamo!");
-        Stage test = new Stage();
-        popup(test, "test1.fxml");
+        popup("test1.fxml");
     }
     
     // Controllo che almeno una difficoltà sia stata selezionata
@@ -78,7 +78,7 @@ public class controller {
         increment = 0.001;
     } else {
         Stage test = new Stage();
-        popup(test, "test2.fxml");
+        popup("test2.fxml");
         increment = 0;
     }
     
