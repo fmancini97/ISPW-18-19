@@ -38,7 +38,6 @@ public class controller {
     @FXML
     private Button gioca;
     
-    
     /*
     public void initialize(){
     }*/
@@ -51,7 +50,7 @@ public class controller {
     
     public void popup(String FXML) throws Exception{
         Stage popup = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource(FXML));
+        Parent root = FXMLLoader.load(getClass().getResource("test.fxml"));
         popup.setTitle("Registration Form FXML Application");
         popup.setScene(new Scene(root, 300, 100));
         popup.show();
@@ -85,6 +84,4 @@ public class controller {
     progress.setProgress(progress.getProgress() + increment);
     
 }
-
-
 }
