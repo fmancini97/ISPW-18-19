@@ -19,24 +19,31 @@ import javafx.stage.Window;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.RadioButton;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
 public class controller {
-    @FXML
+        @FXML
+
     private ProgressIndicator progress;
     @FXML
-    private ToggleGroup Group1;
-    @FXML
-    private RadioButton easy;
-    @FXML
-    private RadioButton medium;
-    @FXML
-    private RadioButton hard;
+
+        private ToggleGroup Group1;
+        @FXML
+     
+   private RadioButton easy;
+     @FXML
+        private AnchorPane ancor_pane;
+        @FXML
+
+        
+        private RadioButton medium;
+        @FXML
+
+        private RadioButton hard;
     @FXML
     private Button closeButton;
-    @FXML
-    private Button gioca;
     
     /*
     public void initialize(){
@@ -79,9 +86,12 @@ public class controller {
         Stage test = new Stage();
         popup("test2.fxml");
         increment = 0;
+        
     }
     
+    Button button2 = new Button("Accept");
+    button2.setStyle("-fx-border-width: 20 0 20 0;");
     progress.setProgress(progress.getProgress() + increment);
-    
+        ancor_pane.getChildren().add(button2);            // Add stack pane to HBox object
 }
 }

@@ -55,7 +55,7 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="491.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+    <AnchorPane fx:id="ancor_pane" maxHeight="-1.0" maxWidth="-1.0" prefHeight="491.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
             <Pane layoutX="40.0" layoutY="93.0" prefHeight="142.0" prefWidth="182.0">
                <children>
