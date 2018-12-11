@@ -40,7 +40,7 @@ while(true){
     }
     //mark the observable as changed
     try {
-        Thread.sleep(5000);
+        Thread.sleep(20000);
     } catch (InterruptedException ex) {
         jdbcPersonDAO.closeConnection();
         Logger.getLogger(DataStore.class.getName()).log(Level.SEVERE, null, ex);

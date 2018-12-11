@@ -26,6 +26,8 @@ import javafx.stage.Stage;
 import testobserver.DataStore;
 import Bean.Bean;
 import javafx.application.Platform;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 
 public class controller implements Observer {
@@ -57,8 +59,10 @@ public class controller implements Observer {
     @FXML
     public void closePopup(){
             Stage stage = (Stage) closeButton.getScene().getWindow();
-            stage.close();
+            stage.close();                             
     }
+    
+    
     
     public void popup(String FXML) throws Exception{
         Stage popup = new Stage();
