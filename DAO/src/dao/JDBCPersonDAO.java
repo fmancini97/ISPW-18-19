@@ -67,7 +67,6 @@ public class JDBCPersonDAO implements PersonDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		 	System.out.println(persons);
 		 	return persons;
 	}
 	

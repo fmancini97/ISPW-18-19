@@ -11,16 +11,16 @@ public class Main {
 		
 		JDBCPersonDAO jdbcPersonDAO = new JDBCPersonDAO();
 		jdbcPersonDAO.getConnection();
-		jdbcPersonDAO.insert(person);
 		
-		person.setName("Another Name");
 
-		jdbcPersonDAO.insert(person);
 		
 		List<Person> persons = jdbcPersonDAO.select();
-                for (Person temp : persons) {
-			System.out.println(temp.getName());
+                System.out.println(persons.size());
+                if (persons.size() != 0){
+                    for (Person temp : persons) {
+            		System.out.println(temp.getName());
 		}
+                };
 		jdbcPersonDAO.closeConnection();
 		
 	}
