@@ -5,68 +5,76 @@
  */
 package TestFXDinamico;
 
-import JavaFXApplication7.*;
 import java.util.Observable;
 import java.util.Observer;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ProgressIndicator;
-import javafx.stage.Window;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import testobserver.DataStore;
-import Bean.Bean;
+import Bean.BeanTest;
+import java.awt.event.MouseEvent;
+import java.util.List;
 import javafx.application.Platform;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
- import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
-import javafx.geometry.Pos;
- import javafx.geometry.Rectangle2D;
- import javafx.scene.Group;
- import javafx.scene.Scene; 
+import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
- import javafx.scene.image.Image;
- import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
- import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
- import javafx.scene.paint.Color;
- import javafx.stage.Stage; 
 
-
-
-public class controller {
-
+public class controller implements Observer{
+    
+private DataStore datastore;
+private VBox as;
 @FXML private GridPane tabella;
 
 public void test(){
-        for (int i = 0; i < 100; i++){
-            Button label1 = new Button("Accept");
-            Button label2 = new Button("Accept");
-            Button label3 = new Button("Accept");        
-        
-             tabella.setHalignment(label1, HPos.CENTER);
-                          tabella.setHalignment(label2, HPos.CENTER);
-             tabella.setHalignment(label3, HPos.CENTER);
-
-
-        tabella.add(label1, 0, i);
-        tabella.add(label2, 1, i);
-        tabella.add(label3, 2, i);
-        }
+    
+    
+    this.datastore = new DataStore();
+    Thread t1 =new Thread(this.datastore);  
+    t1.start();
+    this.datastore.addObserver(this); 
 }
+
+private void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        
+        Platform.runLater(() -> {
+        List <BeanTest> itera = (List<BeanTest>)arg;
+        
+        if (!itera.isEmpty()){
+            System.out.println("Cambiamenti!");
+        }
+        
+        for (int i = 0; i < itera.size(); i++) {
+            Button label1 = new Button(itera.get(i).getID());
+            Button label2 = new Button(itera.get(i).getName());
+            Button label3 = new Button(itera.get(i).getSetNotified());
+            Label label4 = new Label();
+            String aa = label4.getText();
+            
+            label1.setOnAction(new EventHandler<ActionEvent>() {
+                public void handle(ActionEvent event) {
+                     Node source = (Node)event.getSource() ;
+                     Integer colIndex = GridPane.getColumnIndex(source);
+                     Integer rowIndex = GridPane.getRowIndex(source);
+                     System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
+                }
+            });
+
+            tabella.setHalignment(label1, HPos.CENTER);
+            tabella.setHalignment(label2, HPos.CENTER);
+            tabella.setHalignment(label3, HPos.CENTER);
+
+            tabella.add(label1, 0, i);
+            tabella.add(label2, 1, i);
+            tabella.add(label3, 2, i);
+		}
+        });
+    }
 }

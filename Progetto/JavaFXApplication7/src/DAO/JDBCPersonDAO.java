@@ -16,6 +16,8 @@ import java.util.LinkedList;
 import java.util.List;
  
 import Entity.Person;
+import Bean.BeanTest;
+import javafx.fxml.FXMLLoader;
  
 public class JDBCPersonDAO implements PersonDAO {
  
@@ -55,6 +57,7 @@ public class JDBCPersonDAO implements PersonDAO {
     
     @Override
     public void setNotified() {
+        
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Persons SET setNotified = 1 WHERE setNotified = 0");
             preparedStatement.executeUpdate();
@@ -75,9 +78,7 @@ public class JDBCPersonDAO implements PersonDAO {
 
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
 
-
                // preparedStatement.setInt(1, id);
-
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 // statement.setString(userId, userID);
@@ -86,7 +87,6 @@ public class JDBCPersonDAO implements PersonDAO {
                     person = new Person();
                     person.setId(Integer.parseInt(resultSet.getString("id")));
                     person.setName(resultSet.getString("name"));
-                     
                     persons.add(person);
                 }
                 resultSet.close();

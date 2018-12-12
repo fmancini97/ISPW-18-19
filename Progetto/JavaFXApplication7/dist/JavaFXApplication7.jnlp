@@ -8,8 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXApplication7.jar" size="71493" download="eager" />
-    <jar href="lib/mysql-connector-java-5.1.47.jar" size="1047875" download="eager" />
+    <jar href="JavaFXApplication7.jar" size="74598" download="eager" />
+    <jar href="lib/mysql-connector-java-5.1.47.jar" size="1047877" download="eager" />
   </resources>
 <security>
   <all-permissions/>

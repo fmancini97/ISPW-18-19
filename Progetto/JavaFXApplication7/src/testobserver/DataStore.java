@@ -12,10 +12,11 @@ import DAO.JDBCPersonDAO;
 import Entity.Person;
 import java.util.List;
 import Bean.Bean;
+import Bean.BeanTest;
+import java.util.LinkedList;
 
 public class DataStore extends Observable implements Runnable{
 
-private String data;    
 
 @Override
 public void run(){
@@ -30,14 +31,24 @@ while(true){
 
     
     List<Person> Result = jdbcPersonDAO.select();
-    if (Result.size() != count && Result.size() != 0){
+    List<BeanTest> list = new LinkedList<BeanTest>();
+    for (Person temp : Result) {
+        BeanTest test = new BeanTest();
+        test.setID(temp.getName());
+        test.setName(temp.toString());
+        test.setSetNotified("true");
+        list.add(test);
+    }
+    setChanged();
+    notifyObservers(list);
+    /* if (Result.size() != count && Result.size() != 0){
         count = Result.size();
         Bean changes = new Bean();
         changes.setChanges(count);
         setChanged();
         notifyObservers(changes);
         jdbcPersonDAO.setNotified();
-    }
+    } */
     //mark the observable as changed
     try {
         Thread.sleep(20000);

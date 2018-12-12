@@ -21,7 +21,6 @@ public class Main {
         Thread t1 =new Thread(dataStore);  
         t1.start();  
 
-        //register observer
 
         dataStore.addObserver(screen); 
  
