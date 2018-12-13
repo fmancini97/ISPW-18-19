@@ -4,17 +4,27 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/TestFXDinamico/controller.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/ControllerLogico/ControllerLogicoDati.java</file>
             <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/TestFXDinamico/main.java</file>
-            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/testobserver/DataStore.java</file>
-            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/TestFXDinamico/m.fxml</file>
             <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/testobserver/Screen.java</file>
             <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/Bean/BeanTest.java</file>
             <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/JavaFXApplication7/main.java</file>
-            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/Bean/Bean.java</file>
-            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/testobserver/Main.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/DAO/SegnalazionePagamentoDAO.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/JavaFXApplication7/controller.java</file>
             <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/DAO/PersonDAO.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/Bean/BeanSegnalazionePagamento.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/TestFXDinamico/controller1.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/testobserver/DataStore.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/TestFXDinamico/m.fxml</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/Entity/SegnalazionePagamento.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/TestFXDinamico/popup.fxml</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/Bean/Bean.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/Entity/Main.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/TestFXDinamico/c.fxml</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/testobserver/Main.java</file>
             <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/Entity/Person.java</file>
             <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/DAO/JDBCPersonDAO.java</file>
+            <file>file:/home/salvatore/Scrivania/Progetto%20ISPW/JavaFXApplication7/src/DAO/JDBCSegnalazionePagamentoDAO.java</file>
         </group>
     </open-files>
 </project-private>

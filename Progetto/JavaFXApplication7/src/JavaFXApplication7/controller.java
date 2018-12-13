@@ -98,7 +98,7 @@ public class controller implements Observer {
         
     }
     
-        DataStore dataStore = new DataStore();
+        DataStore dataStore = DataStore.getInstance();
         
           
         Thread t1 =new Thread(dataStore);  

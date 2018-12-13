@@ -12,11 +12,22 @@ import DAO.JDBCPersonDAO;
 import Entity.Person;
 import java.util.List;
 import Bean.Bean;
+import Bean.BeanNotifica;
 import Bean.BeanTest;
 import java.util.LinkedList;
 
 public class DataStore extends Observable implements Runnable{
-
+    
+    private static DataStore instance;
+    
+    private DataStore(){};
+    
+    public static synchronized DataStore getInstance(){
+        if(instance == null){
+            instance = new DataStore();
+        }
+        return instance;
+    }
 
 @Override
 public void run(){
@@ -26,12 +37,8 @@ jdbcPersonDAO.getConnection();
 int count = 0;
 while(true){
     
-   
-    System.out.println("thread is running...");  
-
-    
     List<Person> Result = jdbcPersonDAO.select();
-    List<BeanTest> list = new LinkedList<BeanTest>();
+    /*List<BeanTest> list = new LinkedList<BeanTest>();
     for (Person temp : Result) {
         BeanTest test = new BeanTest();
         test.setID(temp.getName());
@@ -40,18 +47,19 @@ while(true){
         list.add(test);
     }
     setChanged();
-    notifyObservers(list);
-    /* if (Result.size() != count && Result.size() != 0){
+    notifyObservers(list);*/
+    if (Result.size() != 0){
         count = Result.size();
-        Bean changes = new Bean();
-        changes.setChanges(count);
+        BeanNotifica changes = new BeanNotifica();
+        changes.setNumeroNotifiche(count);
         setChanged();
         notifyObservers(changes);
         jdbcPersonDAO.setNotified();
-    } */
+    } 
+    
     //mark the observable as changed
     try {
-        Thread.sleep(20000);
+        Thread.sleep(10000);
     } catch (InterruptedException ex) {
         jdbcPersonDAO.closeConnection();
         Logger.getLogger(DataStore.class.getName()).log(Level.SEVERE, null, ex);

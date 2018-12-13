@@ -14,14 +14,12 @@ public class Main {
     public static void main(String args[]){
          
         Screen screen = new Screen();
-
-        DataStore dataStore = new DataStore();
         
-          
+        DataStore dataStore = DataStore.getInstance();
+        
         Thread t1 =new Thread(dataStore);  
         t1.start();  
-
-
+        
         dataStore.addObserver(screen); 
  
          
