@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Boundary/visualizzaSegnalazioni.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Boundary/inoltraSegnalazioni.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Bean/SegnalazionePagamentoBean.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Entity/SegnalazionePagamento.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Bean/BeanNotifica.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/DAO/LocatarioDAO.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Controller/Controller.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Bean/ContrattoBean.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/DAO/JDBCSegnalazionePagamento.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/DAO/JDBCLocatario.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/DAO/JDBCContratto.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Boundary/main.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/DAO/SegnalazionePagamentoDAO.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Boundary/pannelloUtente.fxml</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Boundary/visualizzaSegnalazioni.fxml</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/DAO/ContrattoDAO.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Boundary/pannelloUtente.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Boundary/inoltraSegnalazioni.fxml</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Entity/Locatario.java</file>
+            <file>file:/root/NetBeansProjects/TerminaContratto/src/Entity/Contratto.java</file>
+        </group>
+    </open-files>
+</project-private>
