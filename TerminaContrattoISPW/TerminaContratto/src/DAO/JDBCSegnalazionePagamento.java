@@ -7,6 +7,7 @@ package DAO;
 
  
 import Bean.SegnalazionePagamentoBean;
+import Boundary.session;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -44,16 +45,24 @@ public class JDBCSegnalazionePagamento implements SegnalazionePagamentoDAO {
     }
 
     @Override
-    public List<SegnalazionePagamento> getSegnalazioniPagamento() {
+    public List<SegnalazionePagamento> getSegnalazioniPagamento(int IDUtente) {
         
         JDBCContratto jdbcContratto = new JDBCContratto();
         JDBCLocatario jdbcLocatario = new JDBCLocatario();
         
         List<SegnalazionePagamento> listaSegnalazioni = new LinkedList<SegnalazionePagamento>();
         try {
-        String query = "select * from SegnalazioneContratto where Notified = 0";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-               // preparedStatement.setInt(1, id);
+            String query;
+            if (session.getSession().getType() == "Locatario"){
+                query = "select * from SegnalazioneContratto where Notified = 0 and IDLocatario = ?";
+            }
+            
+            else {
+                query = "select * from SegnalazioneContratto where Notified = 0 and IDLocatore = ?";
+            }
+
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setInt(1, IDUtente);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 // statement.setString(userId, userID);
@@ -161,7 +170,7 @@ public class JDBCSegnalazionePagamento implements SegnalazionePagamentoDAO {
         PreparedStatement preparedStatement = this.connection.prepareStatement("UPDATE SegnalazioneContratto SET Stato = 1 WHERE ScadenzaReclamo < CURDATE() and NumeroReclamo != 3");
         preparedStatement.executeUpdate();
         preparedStatement.close();
-        PreparedStatement preparedStatement1 = this.connection.prepareStatement("UPDATE SegnalazioneContratto SET Stato = 2 WHERE ScadenzaReclamo < CURDATE() and NumeroReclamo = 3");
+        PreparedStatement preparedStatement1 = this.connection.prepareStatement("UPDATE SegnalazioneContratto SET Stato = 2 WHERE ScadenzaReclamo < CURDATE() and NumeroReclamo = 3 and Stato != 3");
         preparedStatement1.executeUpdate();
         preparedStatement1.close();   
         } catch (SQLException e) {

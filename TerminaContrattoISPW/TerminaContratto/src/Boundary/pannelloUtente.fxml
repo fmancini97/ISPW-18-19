@@ -54,7 +54,7 @@
          <children>
             <Button fx:id="visualizzaSegnalazioniButton" layoutX="134.0" layoutY="78.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="389.0" onAction="#newScene" text="Visualizza Segnalazioni Pagamento" />
             <Button layoutX="134.0" layoutY="173.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="389.0" text="Inoltra Segnalazione Pagamento" onAction="#newScene1" />
-            <Label layoutX="134.0" layoutY="35.0" prefHeight="16.0" prefWidth="389.0" text="Bentornato &lt;nome_utente&gt;!" textAlignment="CENTER" wrapText="true" />
+            <Label fx:id="benvenuto" layoutX="134.0" layoutY="35.0" prefHeight="16.0" prefWidth="389.0" text="Bentornato &lt;nome_utente&gt;!" textAlignment="CENTER" wrapText="true" />
          </children>
     </AnchorPane>
   </children>

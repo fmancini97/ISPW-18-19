@@ -29,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public class pannelloUtente{
@@ -39,9 +40,13 @@ private VBox as;
 @FXML private Label labelPopup;
 @FXML private ScrollPane principale;
 @FXML private Button visualizzaSegnalazioniButton;
+@FXML private AnchorPane panel;
+@FXML private Label benvenuto;
 
 
 public void initialize(){
+    
+    benvenuto.setText("Bentornato " + session.getSession().getUsername());
     /*
     control = new ControllerLogicoDati();
     DataStore dataStore = DataStore.getInstance();
@@ -82,7 +87,7 @@ public void initialize(){
         GridPane.setHalignment(element3, HPos.CENTER);
         GridPane.setHalignment(element4, HPos.CENTER);*/
 
-/*        tabella.add(element1, 0, i);
+/*      tabella.add(element1, 0, i);
         tabella.add(element2, 1, i);
         tabella.add(element3, 2, i);
         tabella.add(element4, 3, i); */

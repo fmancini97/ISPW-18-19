@@ -8,6 +8,7 @@ package Controller;
 import Bean.BeanNotifica;
 import Bean.ContrattoBean;
 import Bean.SegnalazionePagamentoBean;
+import Boundary.session;
 import DAO.JDBCContratto;
 import DAO.JDBCSegnalazionePagamento;
 import Entity.Contratto;
@@ -41,7 +42,7 @@ public class Controller extends Observable implements Runnable {
         
     jdbcSegnalazionePagamento = new JDBCSegnalazionePagamento();
     
-    List<SegnalazionePagamento> Result = jdbcSegnalazionePagamento.getSegnalazioniPagamento();
+    List<SegnalazionePagamento> Result = jdbcSegnalazionePagamento.getSegnalazioniPagamento(session.getSession().getId());
     System.out.println("\n\nLa dimensione è: " + Result.size());
     List<SegnalazionePagamentoBean> list = new LinkedList<SegnalazionePagamentoBean>();
     
@@ -50,8 +51,6 @@ public class Controller extends Observable implements Runnable {
             dictionarySegnalazionePagamento.put(temp.getID(), temp);    
         }
         list.add(temp.makeBean());
-        // SegnalazionePagamentoBean bean = new SegnalazionePagamentoBean();
-        
     }
     
     return list;    
@@ -110,7 +109,7 @@ public class Controller extends Observable implements Runnable {
        
         int count = 0;
         while(true){
-            List<SegnalazionePagamento> Result = jdbcSegnalazionePagamento.getSegnalazioniPagamento();
+            List<SegnalazionePagamento> Result = jdbcSegnalazionePagamento.getSegnalazioniPagamento(session.getSession().getId());
             jdbcSegnalazionePagamento.checkSegnalazionePagamentoData();    
             
             if (Result.size() != 0){
