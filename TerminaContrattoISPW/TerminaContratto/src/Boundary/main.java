@@ -17,7 +17,8 @@ public class main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         controllerProva = Controller.getInstance();
-        Thread t1 =new Thread(controllerProva);  
+        Thread t1 =new Thread(controllerProva);
+        t1.setDaemon(true);
         t1.start(); 
         Parent root = FXMLLoader.load(getClass().getResource("fakeLogin.fxml"));
        // primaryStage.setTitle("Registration Form FXML Application");

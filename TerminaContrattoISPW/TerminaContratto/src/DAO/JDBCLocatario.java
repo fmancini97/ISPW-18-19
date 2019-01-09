@@ -27,23 +27,9 @@ public class JDBCLocatario implements LocatarioDAO {
     Connection connection = null;
  
     public JDBCLocatario(){
-        connection = getConnection();
+        this.connection = databaseConnection.getConnection();
     }
-    
-    public Connection getConnection(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            if(connection == null)
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:8000/ISPW?user=root&password=");
- 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-             
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return connection;
-    }
+
 
     @Override
     public void incrementaSollecitiPagamento(int ID) {

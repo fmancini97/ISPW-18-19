@@ -26,22 +26,7 @@ public class JDBCContratto implements ContrattoDAO {
     Connection connection = null;
  
     public JDBCContratto(){
-        connection = getConnection();
-    }
-    
-    public Connection getConnection(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            if(connection == null)
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:8000/ISPW?user=root&password=");
- 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-             
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return connection;
+        this.connection = databaseConnection.getConnection();
     }
 
     @Override
@@ -74,7 +59,6 @@ public class JDBCContratto implements ContrattoDAO {
     
     @Override
     public Contratto getContratto(int ID) {
-        getConnection();
         Contratto contratto = null;
         try {
                 String query = "SELECT * from Contratto where IDContratto = ?";

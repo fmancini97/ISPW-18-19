@@ -23,25 +23,10 @@ import javafx.fxml.FXMLLoader;
  
 public class JDBCSegnalazionePagamento implements SegnalazionePagamentoDAO {
     
-    public JDBCSegnalazionePagamento(){
-        this.connection = getConnection();
-    }
- 
     Connection connection = null;
- 
-    public Connection getConnection(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            if(connection == null)
-                connection = DriverManager.getConnection("jdbc:mysql://localhost:8000/ISPW?user=root&password=");
- 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-             
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return connection;
+    
+    public JDBCSegnalazionePagamento(){
+        this.connection = databaseConnection.getConnection();
     }
 
     @Override
