@@ -45,7 +45,7 @@ public class JDBCSegnalazionePagamento implements SegnalazionePagamentoDAO {
     }
 
     @Override
-    public List<SegnalazionePagamento> getSegnalazioniPagamento(int IDUtente) {
+    public List<SegnalazionePagamento> getSegnalazioniPagamento(int IDUtente, String type) {
         
         JDBCContratto jdbcContratto = new JDBCContratto();
         JDBCLocatario jdbcLocatario = new JDBCLocatario();
@@ -53,7 +53,7 @@ public class JDBCSegnalazionePagamento implements SegnalazionePagamentoDAO {
         List<SegnalazionePagamento> listaSegnalazioni = new LinkedList<SegnalazionePagamento>();
         try {
             String query;
-            if (session.getSession().getType() == "Locatario"){
+            if (type == "Locatario"){
                 query = "select * from SegnalazioneContratto where Notified = 0 and IDLocatario = ?";
             }
             
@@ -63,9 +63,7 @@ public class JDBCSegnalazionePagamento implements SegnalazionePagamentoDAO {
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setInt(1, IDUtente);
-
                 ResultSet resultSet = preparedStatement.executeQuery();
-                // statement.setString(userId, userID);
                 while(resultSet.next()){
                     SegnalazionePagamento segnalazione = new SegnalazionePagamento(
                     Integer.parseInt(resultSet.getString("ID")),
@@ -150,11 +148,37 @@ public class JDBCSegnalazionePagamento implements SegnalazionePagamentoDAO {
             e.printStackTrace();
         } 
     }
+    
+    @Override
+    public void setSegnalazionePagata(int ID) {
+        try {
+            PreparedStatement preparedStatement = this.connection.prepareStatement("UPDATE SegnalazioneContratto SET Stato = 4  WHERE ID = ?");
+            preparedStatement.setString(1,  Integer.toString(ID));
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
+    }
 
     @Override
     public void setSegnalazionePagamentoArchiviata(int ID) {
         try {
             PreparedStatement preparedStatement = this.connection.prepareStatement("UPDATE SegnalazioneContratto SET Stato = 2 WHERE ID = ?");
+            preparedStatement.setString(1,  Integer.toString(ID));
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } 
+    }
+    
+    @Override
+    public void setSegnalazionePagamentoNotificata(int ID) {
+        try {
+            PreparedStatement preparedStatement = this.connection.prepareStatement("UPDATE SegnalazioneContratto SET Notified = 1 WHERE ID = ?");
             preparedStatement.setString(1,  Integer.toString(ID));
             preparedStatement.executeUpdate();
             preparedStatement.close();

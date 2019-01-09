@@ -45,6 +45,14 @@ public class SegnalazionePagamento {
         this.jdbcSegnalazionePagamento.setSegnalazionePagamentoArchiviata(this.ID);
     }
     
+    public void archiviaNotificaSegnalazione(){
+        this.jdbcSegnalazionePagamento.setSegnalazionePagamentoNotificata(this.ID);
+    }
+    
+    public void segnalazionePagamentoPagata(){
+        this.jdbcSegnalazionePagamento.setSegnalazionePagata(this.ID);
+    }
+    
     public void incrementaSegnalazionePagamento(){
         this.jdbcSegnalazionePagamento.incrementaNumeroSegnalazione(this.ID);
     }

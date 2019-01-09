@@ -63,7 +63,7 @@ public void initialize(){
     controllerProva = Controller.getInstance();
     controllerProva.addObserver(this);
     
-    List<ContrattoBean> listaResult = controllerProva.getContratti();
+    List<ContrattoBean> listaResult = controllerProva.getContratti(session.getSession().getId());
     // Devo prima mostrare tutti quanti i contratti attivi, quindi principlamente devo lavorare con questo
     
     List<Integer> IDContratti = new LinkedList<>();

@@ -45,14 +45,14 @@ public class JDBCContratto implements ContrattoDAO {
     }
 
     @Override
-    public List<Contratto> getContratti() {
+    public List<Contratto> getContratti(int ID) {
         
         
         List<Contratto> listaContratti = new LinkedList<>();
         try {
         String query = "select * from Contratto where StatoContratto = 1";
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
-               // preparedStatement.setInt(1, id);
+                preparedStatement.setInt(1, ID);
 
                 ResultSet resultSet = preparedStatement.executeQuery();
                 // statement.setString(userId, userID);

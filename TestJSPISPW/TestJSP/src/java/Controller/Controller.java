@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 
-public class Controller extends Observable implements Runnable {
+public class Controller{
     
     // Creo il dizionario, "accetta" un Intero come chiave, e segnalazione Pagamento come valore (oggetto)
     private  Map<Integer, SegnalazionePagamento> dictionarySegnalazionePagamento  = new HashMap<Integer, SegnalazionePagamento>();
@@ -37,11 +37,11 @@ public class Controller extends Observable implements Runnable {
         return controller_instance;
     }
     
-    public List<SegnalazionePagamentoBean> getSegnalazioniPagamento(){
+    public List<SegnalazionePagamentoBean> getSegnalazioniPagamento(int ID, String type){
         
     jdbcSegnalazionePagamento = new JDBCSegnalazionePagamento();
     
-    List<SegnalazionePagamento> Result = jdbcSegnalazionePagamento.getSegnalazioniPagamento(30);
+    List<SegnalazionePagamento> Result = jdbcSegnalazionePagamento.getSegnalazioniPagamento(ID, type);
     System.out.println("\n\nLa dimensione è: " + Result.size());
     List<SegnalazionePagamentoBean> list = new LinkedList<SegnalazionePagamentoBean>();
     
@@ -50,17 +50,15 @@ public class Controller extends Observable implements Runnable {
             dictionarySegnalazionePagamento.put(temp.getID(), temp);    
         }
         list.add(temp.makeBean());
-        // SegnalazionePagamentoBean bean = new SegnalazionePagamentoBean();
-        
     }
     
     return list;    
 }   
     
-    public List<ContrattoBean> getContratti(){
+    public List<ContrattoBean> getContratti(int ID){
         
         JDBCContratto jdbcContratto = new JDBCContratto();
-        List<Contratto> Result = jdbcContratto.getContratti();
+        List<Contratto> Result = jdbcContratto.getContratti(ID);
         List<ContrattoBean> list = new LinkedList<>();
         
         for (Contratto temp : Result) {
@@ -77,6 +75,14 @@ public class Controller extends Observable implements Runnable {
   
     public void setContrattoArchiviato(SegnalazionePagamentoBean bean){
         dictionarySegnalazionePagamento.get(bean.getID()).getContratto().archiviaContratto();            
+}
+    
+        public void setSegnalazioneNotificata(SegnalazionePagamentoBean bean){
+        dictionarySegnalazionePagamento.get(bean.getID()).archiviaNotificaSegnalazione();
+}
+        
+                public void setSegnalazionePagata(SegnalazionePagamentoBean bean){
+        dictionarySegnalazionePagamento.get(bean.getID()).archiviaNotificaSegnalazione();
 }
     
     public void testMakeBean(SegnalazionePagamentoBean bean){
@@ -99,33 +105,5 @@ public class Controller extends Observable implements Runnable {
         
     }
     
-    @Override
-    public void run(){
-            try {
-                Thread.sleep(10000);
-            } catch (InterruptedException ex) {
-                jdbcSegnalazionePagamento.closeConnection();
-            }
-        JDBCSegnalazionePagamento jdbcSegnalazionePagamento = new JDBCSegnalazionePagamento();
-       
-        int count = 0;
-        while(true){
-            List<SegnalazionePagamento> Result = jdbcSegnalazionePagamento.getSegnalazioniPagamento(10);
-            jdbcSegnalazionePagamento.checkSegnalazionePagamentoData();    
-            
-            if (Result.size() != 0){
-                count = Result.size();
-                BeanNotifica changes = new BeanNotifica();
-                changes.setNumeroNotifiche(count);
-                setChanged();
-                notifyObservers(changes);
-            } 
-
-            try {
-                Thread.sleep(15000);
-            } catch (InterruptedException ex) {
-                jdbcSegnalazionePagamento.closeConnection();
-            }
-            }
-        }       
+    
 }

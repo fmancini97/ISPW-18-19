@@ -14,6 +14,6 @@ import Entity.SegnalazionePagamento;
 public interface ContrattoDAO {
     public void setContrattoArchiviato(int ID);
     public Contratto getContratto(int ID);
-    public List<Contratto> getContratti();
+    public List<Contratto> getContratti(int ID);
     public void setContrattoSegnalato(int ID);
 }

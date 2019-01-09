@@ -19,7 +19,7 @@ public class main extends Application {
         controllerProva = Controller.getInstance();
         Thread t1 =new Thread(controllerProva);  
         t1.start(); 
-        Parent root = FXMLLoader.load(getClass().getResource("pannelloUtente.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fakeLogin.fxml"));
        // primaryStage.setTitle("Registration Form FXML Application");
         primaryStage.setScene(new Scene(root, 640, 400));
         primaryStage.setTitle("FERSA - Termina contratto - Pannello utente");

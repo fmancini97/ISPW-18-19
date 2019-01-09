@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Boundary;
+package Bean;
 
 /**
  *
  * @author root
  */
-public class session 
+public class BeanSession 
 { 
     // static variable single_instance of type Singleton 
-    private static session singleSession = null;
+    private static BeanSession singleSession = null;
     private String username;
     private int id;
     private String type;
@@ -21,11 +21,10 @@ public class session
     public String s; 
   
     // private constructor restricted to this class itself 
-    private session(String username, int id, String type) 
-    { 
-        this.username = username;
-        this.id = id;
-        this.type = type;
+    public  BeanSession() 
+    {
+        this.username = "";
+        this.id = 0;
     }
     
     public String getUsername(){
@@ -40,15 +39,17 @@ public class session
         return this.type;
     }
     
-    public static void makeSession(String name, int ID, String type){
-        singleSession = new session(name, ID, type);
+    public void setUsername(String username){
+        this.username = username;
     }
     
-    // static method to create instance of Singleton class 
-    public static session getSession() 
-    { 
-        if (singleSession == null) 
-            singleSession = new session("Pasquale", 30, "Locatario"); 
-        return singleSession; 
-    } 
+    public void setId(int ID){
+        this.id = ID;
+    }
+    
+    public void setType(String type){
+        this.type = type;
+    }
+    
+
 }

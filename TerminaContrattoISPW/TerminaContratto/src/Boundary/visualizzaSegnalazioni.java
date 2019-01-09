@@ -47,14 +47,12 @@ private String dataScadenza = null;
 private Controller controllerProva;
 
 public void initialize(){
-    
-    System.out.println("Ho inizializzato");
-    
+        
     controllerProva = Controller.getInstance();
     controllerProva.addObserver(this);
     
     List<Integer> IDSegnalazioni = new LinkedList<>();
-    List<SegnalazionePagamentoBean> listaResult = controllerProva.getSegnalazioniPagamento();
+    List<SegnalazionePagamentoBean> listaResult = controllerProva.getSegnalazioniPagamento(session.getSession().getId(), session.getSession().getType());
 
     if (listaResult.size() == 0){
         // Fare qualcosa se non ho risultati
@@ -84,11 +82,24 @@ public void initialize(){
             
             switch(Result.getStato()){
                 case 0:
-                    element3.setText("In attesa del locatario");
-                    element3.setDisable(true);
+                    if (session.getSession().getType() == "Locatore"){
+                        element3.setText("In attesa del locatario");
+                        element3.setDisable(true);}
+                    else{
+                    element3.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        SegnalazionePagamentoBean bean = new SegnalazionePagamentoBean();
+                        bean.setID(Result.getID());
+                        controllerProva.setSegnalazionePagata(bean);
+                        element3.setDisable(true);
+                    }
+                });                    
+                    }
                     break;
                 
                 case 1:
+                    if (session.getSession().getType() == "Locatore"){
                     element3.setText("Reinoltra segnalazione");
                     
                     element3.setOnAction(new EventHandler<ActionEvent>() {
@@ -100,10 +111,14 @@ public void initialize(){
                         controllerProva.incrementaSegnalazione(bean);
                         element3.setDisable(true);
                     }
-                });
+                });} else {
+                    element3.setText("In attesa del locatore");
+                    element3.setDisable(true);
+                    }
                     break;
                     
                 case 2:
+                    if(session.getSession().getType() == "Locatore"){
                     element3.setText("Archivia contratto");
                     
                     element3.setOnAction(new EventHandler<ActionEvent>() {
@@ -114,13 +129,47 @@ public void initialize(){
                         controllerProva.setContrattoArchiviato(bean);
                         element3.setDisable(true);
                     }
-                });
+                });} else {
+                        element3.setText("In attesa del locatore");
+                        element3.setDisable(true);
+                    }
                     break;
                     
                 case 3:
+                    if (session.getSession().getType() == "Locatore"){
                     element3.setText("Archivia contratto");
                     element3.setDisable(true);
+                    
+                    }else{
+                        
+                    element3.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        SegnalazionePagamentoBean bean = new SegnalazionePagamentoBean();
+                        bean.setID(Result.getID());
+                        controllerProva.setSegnalazioneNotificata(bean);
+                        element3.setDisable(true);
+                    }
+                });
+                    element3.setText("Archivia notitica");
+                    }
                     break;
+                    
+                case 4:
+                    if(session.getSession().getType() == "Locatore"){
+                    element3.setText("Archivia notifica");
+                    element3.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        SegnalazionePagamentoBean bean = new SegnalazionePagamentoBean();
+                        bean.setID(Result.getID());
+                        controllerProva.setSegnalazioneNotificata(bean);
+                        element3.setDisable(true);
+                    }
+                });                    } else {
+                    element3.setText("Conferma pagamento");
+                    element3.setDisable(true);
+                    }
             }}}}
 
     @Override
