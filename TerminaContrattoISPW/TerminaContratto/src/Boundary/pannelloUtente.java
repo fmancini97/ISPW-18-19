@@ -21,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,7 +46,7 @@ private VBox as;
 
 
 public void initialize(){
-    
+
     benvenuto.setText("Bentornato " + session.getSession().getUsername());
     /*
     control = new ControllerLogicoDati();
@@ -105,12 +106,25 @@ public void initialize(){
         stage.show();
     }
     
-        @FXML
+    @FXML
     public void newScene1() throws IOException{
         Stage stage=(Stage) visualizzaSegnalazioniButton.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setController(this);
         Parent myNewScene = loader.load(getClass().getResource("inoltraSegnalazioni.fxml"));
+        Scene scene = new Scene(myNewScene);
+        stage.setScene(scene);
+        stage.setTitle("FERSA - Termina contratto - Inoltra segnalazioni");
+        stage.show();
+    }
+    
+    @FXML
+    public void newScene2() throws IOException{
+        System.out.println("clickeD");
+        Stage stage=(Stage) visualizzaSegnalazioniButton.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setController(this);
+        Parent myNewScene = loader.load(getClass().getResource("fakeLogin.fxml"));
         Scene scene = new Scene(myNewScene);
         stage.setScene(scene);
         stage.setTitle("FERSA - Termina contratto - Inoltra segnalazioni");

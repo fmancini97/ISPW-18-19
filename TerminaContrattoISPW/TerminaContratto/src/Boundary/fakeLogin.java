@@ -6,6 +6,7 @@
 package Boundary;
 
 import java.io.IOException;
+import java.net.URL;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +26,13 @@ public class fakeLogin {
     @FXML private Button buttonLocatore;
     @FXML private Button buttonLocatario;
     
-            
+    
+    public void initialize(){
+    
+        //buttonLocatore.getScene().getStylesheets().add(getClass().getResource("test.css").toExternalForm());
+        System.out.println(buttonLocatore.getScene());
+    }
+    
     @FXML
     private void setLocatore() throws IOException {
         session.makeSession("Pasquale", Integer.parseInt(IDValue.getText()), "Locatore");
